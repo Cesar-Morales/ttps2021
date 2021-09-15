@@ -18,23 +18,17 @@ while (ultimoLeido[:-1] != "-1"):
 ok = 0
 tot = 0
 for key in diccionarioDeDatos.keys():
-    # resultados tiene todos los resultados de la clave
+    # resultados tiene guardado todos los resultados de la clave
     resultados = diccionarioDeDatos[key][1::2]
+    totAux = 0
     if("right" in resultados):
-        # tiempos tiene todos los resultados
-        tiempos = diccionarioDeDatos[key][0::2]
-        totAux = (len(tiempos)-1)*20
-        for index, num in enumerate(tiempos):
-            totAux+=int(num)
+        # tiempos tiene guardado todos los resultados del tiempo
+        tiempoPorIntentos = diccionarioDeDatos[key][0::2]
+        totAux += ((len(tiempoPorIntentos))-1)*20
+        totAux += int(diccionarioDeDatos[key][-2])
         ok+=1
         tot+=totAux
 print(ok, " ", tot)
-
-
-
-# FALTAN MEJORAR LAS CUENTAS
-
-
 
 
 # INPUT
