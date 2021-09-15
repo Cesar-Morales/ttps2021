@@ -15,15 +15,38 @@ while (ultimoLeido[:-1] != "-1"):
     ultimoLeido = stdin.readline()
 
 # Guardo datos particulares en diccionarios
-print(diccionarioDeDatos.keys())
-print(diccionarioDeDatos.values())
-print(diccionarioDeDatos["B"][0::2])
-lista = diccionarioDeDatos["B"][0::2]
+ok = 0
+tot = 0
+for key in diccionarioDeDatos.keys():
+    # resultados tiene todos los resultados de la clave
+    resultados = diccionarioDeDatos[key][1::2]
+    if("right" in resultados):
+        # tiempos tiene todos los resultados
+        tiempos = diccionarioDeDatos[key][0::2]
+        totAux = (len(tiempos)-1)*20
+        for index, num in enumerate(tiempos):
+            totAux+=int(num)
+        ok+=1
+        tot+=totAux
+print(ok, " ", tot)
 
-# Probando una suma
-tot = (len(lista)-1)*20
-for index, num in enumerate(lista):
-    tot+=int(num)
-print(tot)
 
 
+# FALTAN MEJORAR LAS CUENTAS
+
+
+
+
+# INPUT
+# 3 E right
+# 10 A wrong
+# 30 C wrong
+# 50 B wrong
+# 100 A wrong
+# 200 A right
+# 250 C wrong
+# 300 D right
+# -1
+
+# OUTPUT
+# 3 543
