@@ -30,3 +30,4 @@ numsArr = [int(x) for x in stdin.readline().split(" ")]
 a=Switcher()
 price = a.numbers_to_code_and_amount(numsArr[0], numsArr[1])
 print("Total: R$ {:.2f}".format(price))
+
