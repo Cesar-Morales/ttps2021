@@ -20,8 +20,9 @@ def returnAmount(arr):
         if (addNumbers(measure) == 1):
             amount+=1
     return amount
+
     
-strArr = [str(x) for x in stdin.readline().split("/")]
+strArr = [str(x) for x in stdin.readline().strip("\n").split("/")]
 try:
     print(returnAmount(strArr))
 except:
