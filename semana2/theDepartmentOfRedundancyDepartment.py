@@ -3,13 +3,7 @@ from sys import stdin
 
 inputArr = [str(x) for x in stdin.readline().strip("\n").split(" ")]
 
-setInputArr = set()
+setInputArr = set(inputArr)
 
-for num in inputArr:
-    setInputArr.add(num)
-
-
-for numIndex in inputArr:
-    if (numIndex in setInputArr):
-        print(numIndex, inputArr.count(numIndex))
-        setInputArr.remove(numIndex)
+for numIndex in setInputArr:
+    print(numIndex, inputArr.count(numIndex))
