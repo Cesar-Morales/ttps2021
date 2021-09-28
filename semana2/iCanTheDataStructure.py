@@ -26,6 +26,7 @@ def main():
   n = int(input())
   for i in range(n):
     query = list(map(int, stdin.readline().strip().split()))
+    #If push
     if query[0] == 1:
       if is_stack:
         stack.append(query[1])
@@ -34,7 +35,9 @@ def main():
       if is_priotiry_queue:
         heappush(priority_queue, -query[1])
       cant_elements += 1
+    #If pop
     elif query[0] == 2:
+      #If empty
       if cant_elements == 0:
         is_priotiry_queue = is_queue = is_stack = False
       else:
@@ -45,6 +48,7 @@ def main():
         if is_stack and stack.pop() != query[1]:
           is_stack = False
       cant_elements -= 1
+  # Check is_
   check(is_stack, is_queue, is_priotiry_queue)
 
 

@@ -1,9 +1,17 @@
 # https://vjudge.net/problem/UVA-484
-from sys import stdin
+from sys import stdin, stdout
 
-inputArr = [str(x) for x in stdin.readline().strip("\n").split(" ")]
+numArr = [str(x) for x in stdin.readline().strip().split(" ")]
+number_set = set()
+dictionary = dict()
 
-setInputArr = set(inputArr)
+for num in numArr:
+    if(num in number_set):
+        cantAux = dictionary.get(num)
+        dictionary.update({num:cantAux})
+    else:
+        number_set.add(num)
+        dictionary.update({num:1})
 
-for numIndex in setInputArr:
-    print(numIndex, inputArr.count(numIndex))
+for n in number_set:
+    stdout.write("\r%s %s\n" % (n, numArr.count(n)))

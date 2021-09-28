@@ -3,8 +3,7 @@
 from sys import stdin
 AUX = -999
 
-## Ingreso de datos
-try:
+def main():
     numsArr = [int(x) for x in stdin.readline().split(" ")]
     numsArr = [ elemento for elemento in numsArr if elemento != "" ]
     ## Obtener resultados
@@ -35,5 +34,11 @@ try:
         # 5 1 4 2 -1 6
         # 1 10 2 9 3 8 4 7 5 6
         print("Jolly")
+
+
+
+## Ingreso de datos
+try:
+    main()
 except:
     print("Not jolly")

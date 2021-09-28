@@ -14,16 +14,16 @@ def addNumbers(measure):
         tot += float(notes[note])
     return tot
 
-def returnAmount(arr):
-    amount = 0
-    for measure in arr[1:-1]:
+def return_count(arr):
+    count = 0
+    for measure in arr:
         if (addNumbers(measure) == 1):
-            amount+=1
-    return amount
+            count+=1
+    return count
 
     
 strArr = [str(x) for x in stdin.readline().strip("\n").split("/")]
 try:
-    print(returnAmount(strArr))
+    print(return_count(strArr[1:-1]))
 except:
     print("")
