@@ -1,12 +1,15 @@
+from sys import stdout, stdin
+
 dictionary = dict()
 
-numbers = [str(x) for x in stdin.readline().strip().split(" ")]
+numbers = stdin.readline().strip().split(" ")
 for number in numbers:
-  if number in dictionary.keys():
-    n = dictionary.get(number)
-    dictionary.update({number : n+1})
-  else:
-    dictionary.update({number : 1})
+    if(type(number) == int):
+        if number in dictionary.keys():
+            n = dictionary.get(number)
+            dictionary[number] = n+1
+        else:
+            dictionary[number] = 1
 
 for number in dictionary.keys():
-      stdout.write("\r%s %s\n" % (number, dictionary.get(number)))
+    stdout.write("\r%s %s\n" % (number, dictionary.get(number)))

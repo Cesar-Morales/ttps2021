@@ -1,25 +1,16 @@
 # https://vjudge.net/problem/UVA-11849
 
 from sys import stdin
-while True:
-    try:
-        number = stdin.readline().strip().split(' ')
-        print(number)
-    except:
+
+true = True
+for number in stdin:
+    num = number.strip()
+    if (num == "0 0"):
         break
-"""
-load_dict = True
-    for number in stdin:
-        num = number.strip()
-        if (num == "fin"):
-            break
-        if (num == ""):
-            load_dict = False
-        else:
-            if (load_dict):
-                # cargo el diccionario
-                load_dictionary(num.split(" "))
-            else:
-                # leo entrada e imprimo resultado
-                read_input(num)
-"""
+    if (true):
+        # es el principio (numJack, numJill)
+        pass
+    else:
+        pass
+        # discos (numera orden ascendente)
+        # primero jack desp jill
