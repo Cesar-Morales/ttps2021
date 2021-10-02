@@ -1,1 +1,1 @@
-# https://www.spoj.com/problems/EDIST/
+# https://vjudge.net/problem/SPOJ-EDIST
