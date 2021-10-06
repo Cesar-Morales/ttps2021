@@ -20,3 +20,5 @@ def lis(idx):
 size = int(stdin.readline().strip())
 seq = stdin.readline().strip().split(" ")
 print(lis(size))
+
+# Esto solo trae el de un lis()
