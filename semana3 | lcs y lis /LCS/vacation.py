@@ -1,16 +1,14 @@
 # https://vjudge.net/problem/UVA-10192
+# Runtime error
+
+from sys import stdout, stdin
+import numpy as np
 
 
-def LCS(s, t):
+def lcs(s, t):
     n = len(s) + 1
     m = len(t) + 1
-    for i in range(n):
-        memo.append([-1]*m)
-
-    for i in range(n):
-        memo[i][0] = 0
-    for j in range(m):
-        memo[0][j] = 0
+    memo = np.zeros((n, m))
 
     for i in range(n):
         for j in range(m):
@@ -25,19 +23,15 @@ def LCS(s, t):
 
 
 def main():
-    case_counter = 1
+    count = 1
     while True:
-        set_of_cities = input()
-        if len(set_of_cities) > 0 and set_of_cities[0] == "#":
+        set_c = stdin.readline().strip()
+        if len(set_c) > 0 and set_c[0] == "#":
             break
-        set_of_cities2 = input()
-        if len(set_of_cities2) > 0 and set_of_cities2[0] == "#":
-            break
-        count_c = LCS(set_of_cities, set_of_cities2)
-        print("Case #{}: you can visit at most {} cities.".format(
-            case_counter, count_c))
-        case_counter += 1
+        set_c2 = stdin.readline().strip()
+        stdout.write("Case #{}: you can visit at most {} cities.\n".format(
+            count, int(lcs(set_c, set_c2))))
+        count += 1
 
 
-memo = []
 main()
