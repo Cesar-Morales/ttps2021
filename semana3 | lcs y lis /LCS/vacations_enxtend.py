@@ -34,11 +34,13 @@ def LCS(s, t):
     for j in range(m):
         memo[0][j] = 0
 
-    #imprimir_matriz(s, t)
+    imprimir_matriz(n, m, s, t)
 
     for i in range(n):
         for j in range(m):
-            if s[i-1] == t[j-1]:
+            if j == 0 or i == 0:
+                pass
+            elif s[i-1] == t[j-1]:
                 memo[i][j] = memo[i-1][j-1] + 1
             else:
                 memo[i][j] = max(memo[i-1][j], memo[i][j-1])
