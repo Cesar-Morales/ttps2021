@@ -1,0 +1,14 @@
+# find set basico
+# findSet(x):
+#   while x != p(x)
+#       x = p(x)
+#   return x
+
+
+# path compression findSet
+#
+# findSet(x):
+#   if x != p(x)
+#       p(x) = findSet(x)
+#   return p(x)
+
