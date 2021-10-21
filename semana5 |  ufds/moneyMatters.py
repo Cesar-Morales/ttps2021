@@ -3,29 +3,27 @@
 # Path compression
 from sys import stdout
 
-def find_set(x, f):
-    if x != f[x]:
-        f[x] = find_set(f[x], f)
-    return f[x]
+def find_set(x):
+    if x != father[x]:
+        father[x] = find_set(father[x])
+    return father[x]
 
 def unionByRank():
-    r = find_set(frnd1, father)
-    s = find_set(frnd2, father)
-    if (s == r): return
-    if rank[r] > rank[r]:
-        father[s] = r
-    elif rank[r] < rank[r]:
-        father[r] = s
-    else:
-        father[r] = s
-        rank[s] +=1
-
+    r = find_set(frnd1)
+    s = find_set(frnd2)
+    if (s != r):
+        if rank[r] > rank[s]:
+            father[s] = r
+        elif rank[r] < rank[s]:
+            father[r] = s
+        else:
+            father[r] = s
+            rank[s] +=1
 
 test_cases = int(input())
-
+result=[]
 for case in range(test_cases):
     friends, remaining_friendships = [int(x) for x in input().split()]
-
     payments = []
     friendships = []
     for person in range(friends):
@@ -33,32 +31,24 @@ for case in range(test_cases):
     for friend in range(remaining_friendships):
         person1, person2 = [int(x) for x in input().split()]
         friendships.append([person1, person2])
-
-    # Create father and rank defaults
-    # father[i] = padre del elemento i
-    # rank similar o mayor a altura
-    father = [x for x in range(friends)]  # c/u apunta a si mismo
-    rank = [0 for x in range(friends)]   # arrancan de cero
-
+    father = [x for x in range(friends)]
+    rank = [0]*friends
     for each in friendships:
         frnd1 = each[0]
         frnd2 = each[1]
-
         unionByRank()
-
-        debts = [0 for x in range(friends)]
-
+        debts = [0]*friends
         for i in range(friends):
-            pad = find_set(i, father)
+            pad = find_set(i)
             debts[pad]+= payments[i]
-        
         posible = True
         for s in debts:
             if s != 0:
                 posible = False
                 break
-    
-    stdout.write("POSSIBLE\n") if posible else stdout.write("IMPOSSIBLE\n")
+    result.append(posible)
+for r in result:
+    stdout.write("POSSIBLE\n") if r else stdout.write("IMPOSSIBLE\n")
 
 # TEST CASE 
 # 2
