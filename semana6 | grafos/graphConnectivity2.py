@@ -38,17 +38,14 @@ test_cases = int(input())
 input()
 min = ord("A")
 for case in range(test_cases):
-    n = ord(input())+1-min
+    n = (ord(input())-min)+1
     adjacency = [[] for x in range(n)]
     conn = input()
     while conn:
         a, b = [ord(i)-min for i in list(conn)]
         adjacency[a].append(b)
         adjacency[b].append(a)
-        try:
-            conn = input()
-        except:
-            break
+
     print(cc(adjacency))
     if test_cases-case > 1:
         print()
