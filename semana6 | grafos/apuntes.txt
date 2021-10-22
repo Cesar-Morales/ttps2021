@@ -1,0 +1,28 @@
+RECORRIDOS
+
+    ---------ALGORITMO RECURSIVO---------
+    
+    DFS --> Recorrido en profundidad
+        Marco vertice como visitado
+        Para cada "w" adyasente a "v"
+            Si w no esta marcado
+            DFS(w)  
+    
+    ---------ALGORITMO ITERATIVO---------
+    
+    BFS --> Recorrido a lo ancho
+        Uso una cola 
+        primero visito el origen
+        despues los adyasentes del origen
+        despues los adyasentes de los adyasentes
+
+    
+    Componentes conexas
+        no dirigido y no conexo cuando hay 2 grafos que no estan unidos
+
+    Puntos de articulacion
+        todo nodo que si lo saco se divide lo que era un grafo en 2 o mas grafos
+    
+    Puentes
+        todo vertice que si lo saco se divide lo que era un grafo en 2 o mas grafos
+ 
