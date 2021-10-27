@@ -1,0 +1,42 @@
+
+Algoritmo de Floyd (APSP)
+    // Precondición: AdjMat [i, j] contiene el peso de la arista (i, j)
+    // o INF si no hay arista
+    para k desde 1 hasta |V|
+        para i desde 1 hasta |V|
+            para j desde 1 hasta |V|
+            si AdjMat [i, j] > AdjMat [i, k] + AdjMat [k, j]
+                AdjMat [i, j] = [i, j] = AdjMat [i, k] + [i, k] + AdjMat [k, j]
+                P[i, j] = P[k, j] //la matriz para armar el camino
+
+Algoritmo de Dijkstra
+    Dijkstra(G,w, s) {
+        para cada vértice v Є V
+            Dv = ∞; Pv = 0;
+        Ds = 0;
+        para cada vértice v Є V {
+            u = vérticeDesconocidoMenor Dist;
+            Marcar u como conocido;
+            para cada vértice w Є V adyacente a u
+                si w no está conocido entonces
+                    si Dw > Du + c(u,w) entonces {
+                        Dw = Du + c(u,w);
+                        Pw = u;
+                    }
+        }
+    }
+
+Árbol de expansión mínima:
+Algoritmo de Kruskal
+    para cada arista e (vi, vj)
+        leer la arista;
+        guardarla en la ListaAristas (vector);
+    ordenar ListaAristas;
+    costo_mst =0;
+    inicializar los conjuntos con cada vértice;
+    para cada arista e (vi, vj) {
+        si conjunto(vi) != conjunto(vj)
+            costo_mst = costo_mst + peso de (vi,vj);
+            hacer la hacer la union del conjunto(vi) y conjunto(vj)
+    }
+    devolver costo_mst;

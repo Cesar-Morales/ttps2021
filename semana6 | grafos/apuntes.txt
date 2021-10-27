@@ -18,7 +18,8 @@ RECORRIDOS
 
     
     Componentes conexas
-        no dirigido y no conexo cuando hay 2 grafos que no estan unidos
+        grafo no dirigido es un tipo de grafo en el cual las aristas representan relaciones simétricas y no tienen un sentido definido
+        no conexo cuando hay 2 grafos que no estan unidos
 
     Puntos de articulacion
         todo nodo que si lo saco se divide lo que era un grafo en 2 o mas grafos
@@ -26,3 +27,42 @@ RECORRIDOS
     Puentes
         todo vertice que si lo saco se divide lo que era un grafo en 2 o mas grafos
  
+
+
+PSEUDOCODIGOS
+   
+    dfs(v):
+    marca como visitado
+    para cada vertice w adyacente a v
+        si w esta no visitado
+            dfs(v)
+
+    BUSCAR_PuntoArticulacion(v) {
+        marca v “visitado”;
+        DFNUMBER[v] ← COUNT;
+        COUNT ← COUNT + 1;
+        LOW[v] ← DFNUMBER[v];
+        for cada vértice w en L[v] do
+            if w está marcado “no visitado”{
+                agrega (v,w) to T;
+                FATHER[w] ← v;
+                BUSCAR_PA(w);
+                if LOW[w] ≥ DFNUMBER[v]
+                // se encontró un punto de articulación v ;
+                LOW[v] ← MIN(LOW[v], LOW[w])
+                }
+            else if w no es FATHER[v] then
+                LOW[v] ← MIN(LOW[v], DFNUMBER[w])
+    }
+
+    PUNTOS_ARTICULACION {
+        desmarcar todos los vértices;
+        COUNT ← 1;
+        for cada vértice v do
+            if v está marcado “no visitado”{
+                dfsRoot ← v; hijosRoot ← 0;
+                BUSCAR_PA(v);
+                if hijosRoot > 1
+                    dfsRoot es un punto de articulación;
+        }
+    }
