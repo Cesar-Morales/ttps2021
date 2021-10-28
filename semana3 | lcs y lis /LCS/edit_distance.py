@@ -1,31 +1,25 @@
 # https://vjudge.net/problem/SPOJ-EDIST
+# NZEC
 
 from functools import lru_cache
 from sys import stdin, stdout
-import re
 
-def sacarIguales(sA,sB):
-    for eachChar in sA:
-        if(eachChar in sB):
-            sB = re.sub(eachChar,"",sB , count = 1)
-            sA = re.sub(eachChar,"",sA , count = 1)
-    return sA, sB
-
-
-
-cant = int(stdin.readline())
-for _ in range(cant):
-    stringA = input()
-    stringB = input()
-    @lru_cache()
-    def DP(i, j):
-        if (j == 0):
-            return i
-        elif(i == 0):
-            return j
-        elif (stringA[i - 1] == stringB[j - 1]):
-            return DP(i - 1, j - 1)
-        return 1 + min( DP((i - 1), j), 
+def main():
+    cant = int(stdin.readline().strip())
+    for _ in range(cant):
+        strA = stdin.readline().strip()
+        strB = stdin.readline().strip()
+        @lru_cache(maxsize=None)
+        def DP(i, j):
+            if (j == 0):
+                return i
+            elif(i == 0):
+                return j
+            elif (strA[i - 1] == strB[j - 1]):
+                return DP(i - 1, j - 1)
+            return 1 + min(DP((i - 1), j), 
                         DP(i, j - 1), 
                         DP(i-1, j-1))
-    stdout.write(str(DP(len(stringA),len(stringB)))+"\n")
+        stdout.write("{}\n".format(DP(len(strA),len(strB))))
+    return 0
+main()
