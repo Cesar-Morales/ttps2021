@@ -1,6 +1,6 @@
 # https://vjudge.net/problem/SPOJ-EDIST
-# NZEC
-
+# 
+#import time
 from functools import lru_cache
 from sys import stdin, stdout
 
@@ -9,7 +9,7 @@ def main():
     for _ in range(cant):
         strA = stdin.readline().strip()
         strB = stdin.readline().strip()
-        @lru_cache(maxsize=None)
+        @lru_cache
         def DP(i, j):
             if (j == 0):
                 return i
@@ -23,3 +23,4 @@ def main():
         stdout.write("{}\n".format(DP(len(strA),len(strB))))
     return 0
 main()
+#print(time.time()) 

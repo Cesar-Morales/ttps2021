@@ -1,26 +1,27 @@
-def ed(sA, sB):
-    size_sA = len(sA)
-    size_sB = len(sB)
-    memo = [[0] * (size_sB + 1) for x in range(size_sA + 1)]
-    for x in range(size_sA + 1):
-        memo[x][0] = x
-    for x in range(size_sB + 1):
-        memo[0][x] = x
-    for x in range(1, size_sA + 1):
-        for y in range(1, size_sB + 1):
-            memo[x][y] = min(
-                memo[x - 1][y - 1] + (sA[x - 1] != sB[y - 1]),
-                memo[x - 1][y] + 1,
-                memo[x][y - 1] + 1)
-    return memo[-1][-1]
+# https://vjudge.net/problem/SPOJ-EDIST
+# 
+import time
+from sys import stdin, stdout
+import numpy as np
 
+def ed():
+    n= len(s)+1
+    m= len(t)+1
+    memo = np.zeros((n,m), dtype=int)
+    for i in range(n): memo[i][0] = i
+    for j in range(m): memo[0][j] = j
+    for i in range(1, n):
+        for j in range(1, m):
+            memo[i][j] = memo[i-1][j-1] + (1 if (s[i-1] != t[j-1]) else 0)
+            memo[i][j] = min(memo[i][j], memo[i-1][j] + 1)
+            memo[i][j] = min(memo[i][j], memo[i][j-1] + 1)
+    return memo[i-1][j-1]
 
-def main():
-    cant = int(input())
-    for i in range(cant):
-        stringA = input()
-        stringB = input()
-        print(ed(stringA, stringB))
+cant = int(stdin.readline())
+for _ in range(cant):
+    s = stdin.readline()
+    t = stdin.readline()
+    max = ed()
+    stdout.write("{}\n".format(max))
 
-
-main()  
+print(time.time())
