@@ -1,13 +1,14 @@
 # https://vjudge.net/problem/SPOJ-EDIST
 # 
-import time
+#ACCEPTED (PYPY - Python2.7)
+#  
 from sys import stdin, stdout
-import numpy as np
+
 
 def ed():
     n= len(s)+1
     m= len(t)+1
-    memo = np.zeros((n,m), dtype=int)
+    memo = [[0]*(m) for i in range(n)] 
     for i in range(n): memo[i][0] = i
     for j in range(m): memo[0][j] = j
     for i in range(1, n):
@@ -23,5 +24,3 @@ for _ in range(cant):
     t = stdin.readline()
     max = ed()
     stdout.write("{}\n".format(max))
-
-print(time.time())
