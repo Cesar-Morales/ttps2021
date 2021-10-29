@@ -1,6 +1,5 @@
 # https://vjudge.net/problem/SPOJ-EDIST
-# 
-#import time
+
 from functools import lru_cache
 from sys import stdin, stdout
 
@@ -18,5 +17,3 @@ for _ in range(int(cant)):
                     DP(i, j - 1)+1, 
                     DP(i-1, j-1) + (1 if (strA[i-1] != strB[j-1]) else 0))
     stdout.write("{}\n".format(DP(len(strA),len(strB))))
-    
-#print(time.time()) 

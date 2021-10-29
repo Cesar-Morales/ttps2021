@@ -1,9 +1,7 @@
 # https://vjudge.net/problem/SPOJ-EDIST
-# 
 #ACCEPTED (PYPY - Python2.7)
-#  
-from sys import stdin, stdout
 
+from sys import stdin, stdout
 
 def ed():
     n= len(s)+1
