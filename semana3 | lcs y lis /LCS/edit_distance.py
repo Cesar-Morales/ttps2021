@@ -1,24 +1,25 @@
 # https://vjudge.net/problem/SPOJ-EDIST
+# NZEC
 
 from functools import lru_cache
-
+from sys import stdin, stdout
 
 def main():
-    cant = int(input())
-    for i in range(cant):
-        stringA = input()
-        stringB = input()
-
+    cant = int(stdin.readline().strip())
+    for _ in range(cant):
+        strA = stdin.readline().strip()
+        strB = stdin.readline().strip()
         @lru_cache(maxsize=None)
         def DP(i, j):
             if (j == 0):
                 return i
             elif(i == 0):
                 return j
-            else:
-                return min(DP((i - 1), j), DP(i, j - 1), DP((i - 1), (j - 1)))
-
-       print(DP(0,0))
-
-
+            elif (strA[i - 1] == strB[j - 1]):
+                return DP(i - 1, j - 1)
+            return 1 + min(DP((i - 1), j), 
+                        DP(i, j - 1), 
+                        DP(i-1, j-1))
+        stdout.write("{}\n".format(DP(len(strA),len(strB))))
+    return 0
 main()
